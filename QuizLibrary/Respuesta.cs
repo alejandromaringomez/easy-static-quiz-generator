@@ -7,7 +7,18 @@ namespace QuizLibrary
         private string _respuesta;
         private bool _correcta;
 
+        public Respuesta(string respuesta, bool correcta = false)
+        {
+            this.respuesta = respuesta;
+            this.correcta = correcta;
+        }
+
         public string respuesta { set; get; }
         public bool correcta { set; get; }
+
+        public string toJS()
+        {
+            return "[\"" + this.respuesta + "\", " + this.correcta + "]";
+        }
     }
 }
