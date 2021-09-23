@@ -17,7 +17,7 @@ namespace WinFormsApp
             this.preguntas = new List<Pregunta>();
         }
 
-        public void actualizarLista()
+        public void actualizarDatos()
         {
             lvPreguntas.Items.Clear();
             foreach(Pregunta pregunta in this.preguntas)
@@ -31,6 +31,9 @@ namespace WinFormsApp
                 item.SubItems.AddRange(data);
                 lvPreguntas.Items.Add(item);
             }
+            tsmiExportar.Enabled = this.preguntas.Count > 0;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
         }
 
         public int buscarPregunta(string pregunta)
@@ -98,7 +101,7 @@ namespace WinFormsApp
                         this.preguntas.RemoveAt(preguntaIndex);
                     }
                 }
-                this.actualizarLista();
+                this.actualizarDatos();
             }
         }
 
@@ -110,8 +113,8 @@ namespace WinFormsApp
 
         private void lvPreguntas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListView item = (ListView)sender;
-            bool enabled = item.SelectedItems.Count > 0;
+            ListView lv = (ListView)sender;
+            bool enabled = lv.SelectedItems.Count > 0;
             btnEliminar.Enabled = enabled;
             btnModificar.Enabled = enabled;
         }

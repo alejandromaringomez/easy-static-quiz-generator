@@ -10,7 +10,7 @@ namespace WinFormsApp
         private bool esNueva;
         private Pregunta pregunta;
 
-        private void actualizarLista() {
+        private void actualizarDatos() {
             lvRespuestas.Items.Clear();
             foreach (Respuesta respuesta in this.pregunta.respuestas)
             {
@@ -36,7 +36,7 @@ namespace WinFormsApp
             this.pregunta = pregunta;
             txtPregunta.Text = pregunta.pregunta;
             txtPregunta.Enabled = false;
-            this.actualizarLista();
+            this.actualizarDatos();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace WinFormsApp
                                 {
                                     this.formulario.preguntas.Add(this.pregunta);
                                 }
-                                this.formulario.actualizarLista();
+                                this.formulario.actualizarDatos();
                                 this.Close();
                             }
                         }

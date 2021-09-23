@@ -68,6 +68,7 @@ namespace WinFormsApp
             // 
             // tsmiExportar
             // 
+            this.tsmiExportar.Enabled = false;
             this.tsmiExportar.Name = "tsmiExportar";
             this.tsmiExportar.Size = new System.Drawing.Size(180, 22);
             this.tsmiExportar.Text = "Exportar para quiz";
