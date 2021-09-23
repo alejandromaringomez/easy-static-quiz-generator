@@ -47,9 +47,12 @@ namespace WinFormsApp
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            txtPregunta.Clear();
+            if(esNueva)
+            {
+                txtPregunta.Clear();
+                txtPregunta.Focus();
+            }
             lvRespuestas.Items.Clear();
-            txtPregunta.Focus();
         }
 
         private int contarCorrectas()
