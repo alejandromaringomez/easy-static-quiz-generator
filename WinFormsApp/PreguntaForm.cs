@@ -96,6 +96,7 @@ namespace WinFormsApp
                             } else
                             {
                                 this.pregunta.pregunta = txtPregunta.Text;
+                                this.pregunta.respuestas.Clear();
                                 foreach (ListViewItem item in lvRespuestas.Items)
                                 {
                                     Respuesta respuesta = new Respuesta(item.Text, item.Checked);
