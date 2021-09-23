@@ -104,7 +104,7 @@ namespace WinFormsApp
 
         private void btnNueva_Click(object sender, EventArgs e)
         {
-            PreguntaCrear formulario = new PreguntaCrear(this);
+            PreguntaForm formulario = new PreguntaForm(this);
             formulario.ShowDialog();
         }
 
@@ -114,6 +114,19 @@ namespace WinFormsApp
             bool enabled = item.SelectedItems.Count > 0;
             btnEliminar.Enabled = enabled;
             btnModificar.Enabled = enabled;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in lvPreguntas.SelectedItems)
+            {
+                int preguntaIndex = this.buscarPregunta(item.Text);
+                if(preguntaIndex >= 0)
+                {
+                    PreguntaForm formulario = new PreguntaForm(this, this.preguntas[preguntaIndex]);
+                    formulario.ShowDialog();
+                }
+            }
         }
     }
 }

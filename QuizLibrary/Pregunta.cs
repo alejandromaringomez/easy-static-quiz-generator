@@ -11,6 +11,11 @@ namespace QuizLibrary
         private string _pregunta;
         private List<Respuesta> _respuestas;
 
+        public Pregunta()
+        {
+            this.respuestas = new List<Respuesta>();
+        }
+
         public Pregunta(string pregunta)
         {
             this.pregunta = pregunta;

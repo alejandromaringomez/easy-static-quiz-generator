@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsApp
 {
-    partial class PreguntaCrear
+    partial class PreguntaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -68,7 +68,7 @@ namespace WinFormsApp
             this.gbRespuestas.Controls.Add(this.lvRespuestas);
             this.gbRespuestas.Location = new System.Drawing.Point(12, 118);
             this.gbRespuestas.Name = "gbRespuestas";
-            this.gbRespuestas.Size = new System.Drawing.Size(378, 227);
+            this.gbRespuestas.Size = new System.Drawing.Size(378, 247);
             this.gbRespuestas.TabIndex = 3;
             this.gbRespuestas.TabStop = false;
             this.gbRespuestas.Text = "Respuestas";
@@ -76,9 +76,9 @@ namespace WinFormsApp
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
-            this.btnEliminar.Location = new System.Drawing.Point(216, 194);
+            this.btnEliminar.Location = new System.Drawing.Point(216, 206);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 27);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -86,9 +86,9 @@ namespace WinFormsApp
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(297, 194);
+            this.btnAdd.Location = new System.Drawing.Point(297, 206);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 27);
+            this.btnAdd.Size = new System.Drawing.Size(75, 35);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@ namespace WinFormsApp
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(228, 351);
+            this.btnBorrar.Location = new System.Drawing.Point(228, 371);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
+            this.btnBorrar.Size = new System.Drawing.Size(75, 35);
             this.btnBorrar.TabIndex = 4;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
@@ -132,29 +132,29 @@ namespace WinFormsApp
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(309, 351);
+            this.btnGuardar.Location = new System.Drawing.Point(309, 371);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 35);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // PreguntaCrear
+            // PreguntaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 379);
+            this.ClientSize = new System.Drawing.Size(402, 418);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.gbRespuestas);
             this.Controls.Add(this.gbPregunta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "PreguntaCrear";
+            this.Name = "PreguntaForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Crear pregunta";
+            this.Text = "Pregunta";
             this.gbPregunta.ResumeLayout(false);
             this.gbPregunta.PerformLayout();
             this.gbRespuestas.ResumeLayout(false);

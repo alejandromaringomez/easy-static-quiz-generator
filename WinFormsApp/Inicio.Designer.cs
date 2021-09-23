@@ -69,8 +69,8 @@ namespace WinFormsApp
             // tsmiExportar
             // 
             this.tsmiExportar.Name = "tsmiExportar";
-            this.tsmiExportar.Size = new System.Drawing.Size(118, 22);
-            this.tsmiExportar.Text = "Exportar";
+            this.tsmiExportar.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExportar.Text = "Exportar para quiz";
             this.tsmiExportar.Click += new System.EventHandler(this.tsmiExportar_Click);
             // 
             // label1
@@ -138,6 +138,7 @@ namespace WinFormsApp
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 

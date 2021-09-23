@@ -4,14 +4,39 @@ using QuizLibrary;
 
 namespace WinFormsApp
 {
-    public partial class PreguntaCrear : Form
+    public partial class PreguntaForm : Form
     {
         private Inicio formulario;
+        private bool esNueva;
+        private Pregunta pregunta;
 
-        public PreguntaCrear(Inicio formulario)
+        private void actualizarLista() {
+            lvRespuestas.Items.Clear();
+            foreach (Respuesta respuesta in this.pregunta.respuestas)
+            {
+                ListViewItem item = new ListViewItem(respuesta.respuesta);
+                item.Checked = respuesta.correcta;
+                lvRespuestas.Items.Add(item);
+            }
+        }
+
+        public PreguntaForm(Inicio formulario)
         {
             InitializeComponent();
             this.formulario = formulario;
+            this.esNueva = true;
+            this.pregunta = new Pregunta();
+        }
+
+        public PreguntaForm(Inicio formulario, Pregunta pregunta)
+        {
+            InitializeComponent();
+            this.formulario = formulario;
+            this.esNueva = false;
+            this.pregunta = pregunta;
+            txtPregunta.Text = pregunta.pregunta;
+            txtPregunta.Enabled = false;
+            this.actualizarLista();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,7 +73,7 @@ namespace WinFormsApp
                 txtPregunta.Focus();
             } else
             {
-                if(this.formulario.buscarPregunta(txtPregunta.Text) >= 0)
+                if(esNueva && this.formulario.buscarPregunta(txtPregunta.Text) >= 0)
                 {
                     MessageBox.Show("No es posible repetir la misma pregunta.", "Repetición");
                     txtPregunta.Focus();
@@ -70,15 +95,17 @@ namespace WinFormsApp
                                 MessageBox.Show("Al menos 1 respuesta debe ser correcta.", "Mínimo requerido");
                             } else
                             {
-                                Pregunta pregunta = new Pregunta(txtPregunta.Text);
+                                this.pregunta.pregunta = txtPregunta.Text;
                                 foreach (ListViewItem item in lvRespuestas.Items)
                                 {
                                     Respuesta respuesta = new Respuesta(item.Text, item.Checked);
-                                    pregunta.respuestas.Add(respuesta);
+                                    this.pregunta.respuestas.Add(respuesta);
                                 }
-                                this.formulario.preguntas.Add(pregunta);
+                                if(esNueva)
+                                {
+                                    this.formulario.preguntas.Add(this.pregunta);
+                                }
                                 this.formulario.actualizarLista();
-                                MessageBox.Show("La pregunta ha sido añadida correctamente.", "Confirmación");
                                 this.Close();
                             }
                         }
