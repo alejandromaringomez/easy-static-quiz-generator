@@ -31,9 +31,9 @@ namespace WinFormsApp
                 item.SubItems.AddRange(data);
                 lvPreguntas.Items.Add(item);
             }
-            tsmiExportar.Enabled = this.preguntas.Count > 0;
-            btnEliminar.Enabled = false;
-            btnModificar.Enabled = false;
+            btnEliminar.Visible = false;
+            btnModificar.Visible = false;
+            btnNueva.Enabled = true;
         }
 
         public int buscarPregunta(string pregunta)
@@ -47,45 +47,6 @@ namespace WinFormsApp
                 }
             }
             return -1;
-        }
-
-        private void tsmiExportar_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "JavaScript | *.js";
-            saveFileDialog1.RestoreDirectory = true;
-            DialogResult result = saveFileDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                using (Stream myStream = saveFileDialog1.OpenFile())
-                {
-                    if (myStream != null)
-                    {
-                        try
-                        {
-                            StreamWriter myStreamWriter;
-                            using (myStreamWriter = new StreamWriter(myStream, Encoding.UTF8))
-                            {
-                                string write = "var data = [";
-                                for (int i = 0; i < this.preguntas.Count; i++)
-                                {
-                                    Pregunta item = this.preguntas[i];
-                                    write += item.toJS();
-                                    if((i + 1) != this.preguntas.Count)
-                                    {
-                                        write += ",";
-                                    }
-                                }
-                                write += "];";
-                                myStreamWriter.Write(write);
-                            }
-                        } catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Error al guardar las preguntas");
-                        }
-                    }
-                }
-            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -115,8 +76,9 @@ namespace WinFormsApp
         {
             ListView lv = (ListView)sender;
             bool enabled = lv.SelectedItems.Count > 0;
-            btnEliminar.Enabled = enabled;
-            btnModificar.Enabled = enabled;
+            btnEliminar.Visible = enabled;
+            btnModificar.Visible = enabled;
+            btnNueva.Enabled = !enabled;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -129,6 +91,57 @@ namespace WinFormsApp
                     PreguntaForm formulario = new PreguntaForm(this, this.preguntas[preguntaIndex]);
                     formulario.ShowDialog();
                 }
+            }
+        }
+
+        private string exportarQuizJavascript()
+        {
+            string cadena = "var data = [";
+            for (int i = 0; i < this.preguntas.Count; i++)
+            {
+                Pregunta item = this.preguntas[i];
+                cadena += item.toJS();
+                if ((i + 1) != this.preguntas.Count)
+                {
+                    cadena += ",";
+                }
+            }
+            return cadena + "];";
+        }
+
+        private void tsmiExportarQuiz_Click(object sender, EventArgs e)
+        {
+            if(lvPreguntas.Items.Count > 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "JavaScript | *.js";
+                saveFileDialog.RestoreDirectory = true;
+                DialogResult result = saveFileDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    using (Stream myStream = saveFileDialog.OpenFile())
+                    {
+                        if (myStream != null)
+                        {
+                            try
+                            {
+                                StreamWriter streamWriter;
+                                using (streamWriter = new StreamWriter(myStream, Encoding.UTF8))
+                                {
+                                    string contenido = this.exportarQuizJavascript();
+                                    streamWriter.Write(contenido);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message, "Error al guardar las preguntas");
+                            }
+                        }
+                    }
+                }
+            } else
+            {
+                MessageBox.Show("Para exportar el listado de preguntas es necesario que exista al menos una.", "Sin preguntas");
             }
         }
     }

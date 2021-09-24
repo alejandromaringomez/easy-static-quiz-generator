@@ -32,6 +32,7 @@ namespace WinFormsApp
             this.txtPregunta = new System.Windows.Forms.TextBox();
             this.gbPregunta = new System.Windows.Forms.GroupBox();
             this.gbRespuestas = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lvRespuestas = new System.Windows.Forms.ListView();
@@ -63,6 +64,7 @@ namespace WinFormsApp
             // 
             // gbRespuestas
             // 
+            this.gbRespuestas.Controls.Add(this.label1);
             this.gbRespuestas.Controls.Add(this.btnEliminar);
             this.gbRespuestas.Controls.Add(this.btnAdd);
             this.gbRespuestas.Controls.Add(this.lvRespuestas);
@@ -73,15 +75,24 @@ namespace WinFormsApp
             this.gbRespuestas.TabStop = false;
             this.gbRespuestas.Text = "Respuestas";
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(6, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(366, 34);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Las respuestas marcadas serán las correctas, deben existir al menos dos respuesta" +
+    "s diferentes y al menos una de ellas debe ser correcta.";
+            // 
             // btnEliminar
             // 
-            this.btnEliminar.Enabled = false;
             this.btnEliminar.Location = new System.Drawing.Point(216, 206);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 35);
-            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAdd
@@ -89,7 +100,7 @@ namespace WinFormsApp
             this.btnAdd.Location = new System.Drawing.Point(297, 206);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 35);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -105,11 +116,11 @@ namespace WinFormsApp
             this.lvRespuestas.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvRespuestas.HideSelection = false;
             this.lvRespuestas.LabelEdit = true;
-            this.lvRespuestas.Location = new System.Drawing.Point(6, 22);
+            this.lvRespuestas.Location = new System.Drawing.Point(6, 60);
             this.lvRespuestas.MultiSelect = false;
             this.lvRespuestas.Name = "lvRespuestas";
-            this.lvRespuestas.Size = new System.Drawing.Size(366, 166);
-            this.lvRespuestas.TabIndex = 0;
+            this.lvRespuestas.Size = new System.Drawing.Size(366, 128);
+            this.lvRespuestas.TabIndex = 2;
             this.lvRespuestas.UseCompatibleStateImageBehavior = false;
             this.lvRespuestas.View = System.Windows.Forms.View.Details;
             this.lvRespuestas.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.lvRespuestas_AfterLabelEdit);
@@ -125,7 +136,7 @@ namespace WinFormsApp
             this.btnBorrar.Location = new System.Drawing.Point(228, 371);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 35);
-            this.btnBorrar.TabIndex = 4;
+            this.btnBorrar.TabIndex = 5;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -135,7 +146,7 @@ namespace WinFormsApp
             this.btnGuardar.Location = new System.Drawing.Point(309, 371);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 35);
-            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -172,5 +183,6 @@ namespace WinFormsApp
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label label1;
     }
 }

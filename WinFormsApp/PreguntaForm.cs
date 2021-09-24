@@ -121,7 +121,9 @@ namespace WinFormsApp
         private void lvRespuestas_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListView lv = (ListView)sender;
-            btnEliminar.Enabled = lv.SelectedItems.Count > 0;
+            bool haySeleccionados = lv.SelectedItems.Count > 0;
+            btnEliminar.Visible = haySeleccionados;
+            btnAdd.Enabled = !haySeleccionados;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
