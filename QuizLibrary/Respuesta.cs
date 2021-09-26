@@ -15,10 +15,5 @@ namespace QuizLibrary
 
         public string respuesta { set; get; }
         public bool correcta { set; get; }
-
-        public string toJS()
-        {
-            return "[\"" + this.respuesta + "\", " + this.correcta + "]";
-        }
     }
 }

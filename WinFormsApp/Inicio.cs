@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using QuizLibrary;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace WinFormsApp
 {
@@ -94,19 +95,9 @@ namespace WinFormsApp
             }
         }
 
-        private string exportarQuizJavascript()
+        private string preguntasJson()
         {
-            string cadena = "var data = [";
-            for (int i = 0; i < this.preguntas.Count; i++)
-            {
-                Pregunta item = this.preguntas[i];
-                cadena += item.toJS();
-                if ((i + 1) != this.preguntas.Count)
-                {
-                    cadena += ",";
-                }
-            }
-            return cadena + "];";
+            return JsonSerializer.Serialize(this.preguntas);
         }
 
         private void tsmiExportarQuiz_Click(object sender, EventArgs e)
@@ -114,7 +105,7 @@ namespace WinFormsApp
             if(lvPreguntas.Items.Count > 0)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "JavaScript | *.js";
+                saveFileDialog.Filter = "JSON | *.json";
                 saveFileDialog.RestoreDirectory = true;
                 DialogResult result = saveFileDialog.ShowDialog();
                 if (result == DialogResult.OK)
@@ -128,8 +119,15 @@ namespace WinFormsApp
                                 StreamWriter streamWriter;
                                 using (streamWriter = new StreamWriter(myStream, Encoding.UTF8))
                                 {
-                                    string contenido = this.exportarQuizJavascript();
+                                    string contenido = this.preguntasJson();
                                     streamWriter.Write(contenido);
+                                }
+                                DialogResult borrar = MessageBox.Show("Tus preguntas han sido exportadas con éxito. ¿Deseas borrar las preguntas del listado?", "Proceso finalizado con éxito", MessageBoxButtons.YesNo);
+                                if(borrar == DialogResult.Yes)
+                                {
+                                    this.preguntas.Clear();
+                                    this.actualizarDatos();
+                                    MessageBox.Show("Las preguntas han sido eliminadas correctamente.", "Borrado finalizado");
                                 }
                             }
                             catch (Exception ex)

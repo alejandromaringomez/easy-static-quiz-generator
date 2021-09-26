@@ -69,8 +69,8 @@ namespace WinFormsApp
             // tsmiExportarQuiz
             // 
             this.tsmiExportarQuiz.Name = "tsmiExportarQuiz";
-            this.tsmiExportarQuiz.Size = new System.Drawing.Size(142, 22);
-            this.tsmiExportarQuiz.Text = "... para \'Quiz\'";
+            this.tsmiExportarQuiz.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExportarQuiz.Text = "... como JSON";
             this.tsmiExportarQuiz.Click += new System.EventHandler(this.tsmiExportarQuiz_Click);
             // 
             // label1

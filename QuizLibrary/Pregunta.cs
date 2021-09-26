@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace QuizLibrary
@@ -62,19 +63,9 @@ namespace QuizLibrary
             return this.respuestas.Count;
         }
 
-        public string toJS()
+        public string toJson()
         {
-            string cadena = "{\"pregunta\": \"" + this.pregunta + "\", \"respuestas\":[";
-            for (int i = 0; i < this.respuestas.Count; i++)
-            {
-                Respuesta respuesta = this.respuestas[i];
-                cadena += respuesta.toJS();
-                if((i + 1) != this.respuestas.Count)
-                {
-                    cadena += ",";
-                }
-            }
-            return cadena + "]}";
+            return JsonSerializer.Serialize(this);
         }
     }
 }
