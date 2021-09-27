@@ -8,6 +8,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/alejandromaringomez/easy-static-quiz-generator</RepositoryUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
